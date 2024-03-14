@@ -11,42 +11,42 @@ function countAliveNeighbors(cellInp) {
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y -1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y ){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y +1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x  && cell.y == cellInp.y -1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x  && cell.y == cellInp.y +1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y -1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y ){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y +1){
       
       if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors
+      cellInp.neighbors++
     }    
   });
 
