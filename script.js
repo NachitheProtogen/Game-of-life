@@ -1,60 +1,104 @@
+let cells = [];
+
 const rows = 32; // Man könnte das feld auch größer machen
 const cols = 32; // aber naja
 
-function toggleCell(cellInp) { //Zelle töten oder leben lassen
-  let cell = document.getElementById(cellInp);
-  if (cell.style.backgroundColor=="white") {
-    cell.style.backgroundColor = "black";
-  } else {
-    cell.style.backgroundColor = "white";
-  };
-}
+function countAliveNeighbors(cellInp) {
 
-function countAliveNeighbors(row, col) {
-  const directions = [
-    [-1, -1],
-    [-1, 0],
-    [-1, 1],
-    [0, -1],
-    [0, 1],
-    [1, -1],
-    [1, 0],
-    [1, 1],
-  ];
+  cellInp.neighbors = 0;
 
-  let count = 0;
+  cells.forEach(cell => {
+    if(cell.x == cellInp.x -1 && cell.y == cellInp.y -1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x -1 && cell.y == cellInp.y ){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x -1 && cell.y == cellInp.y +1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x  && cell.y == cellInp.y -1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x  && cell.y == cellInp.y +1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x +1 && cell.y == cellInp.y -1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x +1 && cell.y == cellInp.y ){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }
+    if(cell.x == cellInp.x +1 && cell.y == cellInp.y +1){
+      
+      if(cellInp.style.backgroundColor == "black");
+      cellInp.neighbors
+    }    
+  });
 
-  directions.forEach(([i, j]) => {
-    const newRow = row + i;
-    const newCol = col + j;
+};
 
-    if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
-      const neighbor = document.getElementById(`cell-${newRow}-${newCol}`);
-      if (neighbor.style.backgroundColor == "black") {
-        count++;
+function updateGrid(){
+  cells.forEach(cell => {
+    countAliveNeighbors(cell);
+  })
+  cells.forEach(cell => {
+    if(cell.style.backgroundColor == "black"){
+      // alive
+      if(cell.neighbors < 2){
+        // dies due to isolation
+        cell.style.backgroundColor = "white";
+      }else if(cell.neighbors > 3){
+        // dies due to overpopulation
+        cell.style.backgroundColor = "white";
+      }
+    }else{
+      if(cell.neighbors > 2){
+        // cell is being born in the next gen.
+        cell.style.backgroundColor = "black";
       }
     }
   });
-
-  return count;
 };
-
- 
 
 function createEmptyGrid(rows, cols) {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
         const cell = document.createElement('button');
         cell.className = "cell"
-        cell.style.backgroundColor = "white"
-        cell.id = `cell-${i}-${j}`;
+        cell.style.backgroundColor = "white";
+        cell.x = i+1;
+        cell.y = j+1;
+        cell.neighbors = 0;
         cell.addEventListener("click", () => {
-          toggleCell(cell.id);
+          if (cell.style.backgroundColor=="white") {
+            cell.style.backgroundColor = "black";
+          } else {
+            cell.style.backgroundColor = "white";
+          };
+          console.log(cell.x,cell.y);
         }) 
         canvas.appendChild(cell);
+        cells.push(cell);
     }
     canvas.appendChild(document.createElement('br'));
-};};
+};
+console.log(cells);
+};
 
 let timer;
 
