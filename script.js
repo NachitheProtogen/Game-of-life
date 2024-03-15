@@ -10,44 +10,44 @@ function countAliveNeighbors(cellInp) {
   cells.forEach(cell => {
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y -1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y ){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x -1 && cell.y == cellInp.y +1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x  && cell.y == cellInp.y -1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x  && cell.y == cellInp.y +1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y -1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y ){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}
     if(cell.x == cellInp.x +1 && cell.y == cellInp.y +1){
       
-      if(cellInp.style.backgroundColor == "black");
-      cellInp.neighbors++
-    }    
+      if(cell.style.backgroundColor == "black"){
+      cellInp.neighbors++;
+    }}    
   });
 
 };
@@ -67,7 +67,7 @@ function updateGrid(){
         cell.style.backgroundColor = "white";
       }
     }else{
-      if(cell.neighbors > 2){
+      if(cell.neighbors == 3){
         // cell is being born in the next gen.
         cell.style.backgroundColor = "black";
       }
@@ -81,8 +81,8 @@ function createEmptyGrid(rows, cols) {
         const cell = document.createElement('button');
         cell.className = "cell"
         cell.style.backgroundColor = "white";
-        cell.x = i+1;
-        cell.y = j+1;
+        cell.x = i;
+        cell.y = j;
         cell.neighbors = 0;
         cell.addEventListener("click", () => {
           if (cell.style.backgroundColor=="white") {
